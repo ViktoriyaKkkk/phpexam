@@ -85,7 +85,7 @@ if($query_add and $_GET['user']=='expert')
              $schet++;
          }
          echo '<h2><a href="/?user=admin&doing='.$schet.'">Просмотреть протокол</a></h2>';
-
+         echo '<h2><a href="/?user=admin&doing=del">Удалить данные</a></h2>';
          if ($_GET['doing']==$schet) {
              $connect = pg_connect("host=localhost port=5432 dbname=phpexamen user=postgres password=fly2505");
              $query_read=pg_query($connect, 'SELECT one,two,three,four,five,six,dat,tim,ip,ball FROM phpschema.answers'); //выполнить запрос
@@ -110,6 +110,12 @@ if($query_add and $_GET['user']=='expert')
              echo $ret;
              echo '<br>Средний балл:'.round($avgball[0], 3);
          }
+          if( $_GET['doing']=='del')
+{
+// значит в цикле сейчас текущая запись
+$query_edit=pg_query($connect, "DELETE FROM phpschema.answers WHERE id_ans > 0");
+echo 'Записи удалены';
+}
      }
  }
  ?>
