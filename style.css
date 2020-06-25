@@ -1,0 +1,7 @@
+table{
+    border: 1px solid gray;
+   
+}
+th, td{
+    border: 1px solid rgb(201, 118, 132);
+}
